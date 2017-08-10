@@ -14,7 +14,7 @@ module Luis
   class << self
    attr_accessor :id, :subscription_key, :is_preview_mod, :is_verbose, :is_staging, :timezoneOffset
   end
-  API_BASE_URI = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps'.freeze
+  API_BASE_URI = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/#{id}'.freeze
   def self.api_uri
     uri = API_BASE_URI
     uri += '/preview' if is_preview_mod
@@ -45,7 +45,7 @@ module Luis
   end
 
   def self.default_options
-    options = { 'id' => id, 'subscription-key' => subscription_key }
+    options = { 'subscription-key' => subscription_key }
     options['verbose'] = is_verbose || true
     options['staging'] = is_staging || true
     options['timezoneOffset'] = timezoneOffset || 0
