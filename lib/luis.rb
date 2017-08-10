@@ -29,6 +29,7 @@ module Luis
     options = default_options
     options['q'] = query
     options['contextId'] = context_id if context_id
+    puts "api_url=#{api_uri}, query=#{query}"
     response = get(api_uri, query: options)
     Result.new JSON.parse(response.body)
   end
@@ -45,8 +46,8 @@ module Luis
 
   def self.default_options
     options = { 'id' => id, 'subscription-key' => subscription_key }
-    options['verbose'] = true if is_verbose
-    options['staging'] = true if is_staging
+    options['verbose'] = is_verbose || true
+    options['staging'] = is_staging || true
     options['timezoneOffset'] = timezoneOffset || 0
     
     options
