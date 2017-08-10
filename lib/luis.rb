@@ -29,7 +29,7 @@ module Luis
     options = default_options
     options['q'] = query
     options['contextId'] = context_id if context_id
-    puts "api_url=#{api_uri}, query=#{query}"
+    puts "api_url=#{api_uri}, options=#{options}"
     response = get(api_uri, query: options)
     Result.new JSON.parse(response.body)
   end
