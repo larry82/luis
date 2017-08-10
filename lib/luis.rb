@@ -12,10 +12,9 @@ module Luis
 
   include HTTParty
   class << self
-   attr_accessor :id, :subscription_key, :is_preview_mod, :is_verbose
+   attr_accessor :id, :subscription_key, :is_preview_mod, :is_verbose, :is_staging, :timezoneOffset
   end
-  API_BASE_URI = 'https://api.projectoxford.ai/luis/v1/application'.freeze
-
+  API_BASE_URI = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps'.freeze
   def self.api_uri
     uri = API_BASE_URI
     uri += '/preview' if is_preview_mod
@@ -47,6 +46,9 @@ module Luis
   def self.default_options
     options = { 'id' => id, 'subscription-key' => subscription_key }
     options['verbose'] = true if is_verbose
+    options['staging'] = true if is_staging
+    options['timezoneOffset'] = timezoneOffset || 0
+    
     options
   end
 end
