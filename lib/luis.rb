@@ -14,7 +14,7 @@ module Luis
   class << self
    attr_accessor :id, :subscription_key, :is_preview_mod, :is_verbose, :is_staging, :timezoneOffset
   end
-  API_BASE_URI = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/#{id}'.freeze
+  API_BASE_URI = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/#{id}".freeze
   def self.api_uri
     uri = API_BASE_URI
     uri += '/preview' if is_preview_mod
