@@ -1,7 +1,7 @@
 module Luis
   # Luis entity class
   class Entity < Base
-    attr_accessor :entity, :type, :start_index, :end_index, :score
+    attr_accessor :entity, :type, :start_index, :end_index, :score, :value
 
     def resolution
       if @resolution.present?
@@ -13,6 +13,10 @@ module Luis
       else
         nil
       end
+    end
+
+    def chinese_value
+      resolution.gsub(' ','') || entity.gsub(' ','')
     end
 
   end
