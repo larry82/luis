@@ -16,7 +16,8 @@ module Luis
     end
 
     def chinese_value
-      resolution.gsub(' ','') || entity.gsub(' ','')
+      value = resolution || entity
+      value.gsub(' ','')
     end
 
   end
