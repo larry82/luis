@@ -6,7 +6,7 @@ module Luis
     def resolution
       if @resolution.present?
         begin
-          @resolution["values"][0]
+          @resolution["values"]
         rescue
           nil
         end
@@ -16,8 +16,8 @@ module Luis
     end
 
     def chinese_value
-      value = resolution || entity
-      value.gsub(' ','')
+      values = resolution || [entity]
+      values.map{ |v| v.gsub(' ','') }
     end
 
   end
