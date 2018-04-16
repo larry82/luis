@@ -9,6 +9,8 @@ module Luis
   autoload :Parameter, 'luis/parameter'
   autoload :Dialog, 'luis/dialog'
   autoload :Entity, 'luis/entity'
+  autoload :CompositeEntity, 'luis/composite_entity'
+  autoload :CompositeEntityChild, 'luis/composite_entity_child'
 
   include HTTParty
   class << self
