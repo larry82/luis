@@ -1,7 +1,7 @@
 module Luis
   # Luis result class
   class Result < Base
-    attr_accessor :query, :intents, :entities, :dialog, :top_scoring_intent
+    attr_accessor :query, :intents, :entities, :dialog, :top_scoring_intent, :composite_entities
 
     # Intent with maximum score
     # @return intent with maximum score
@@ -15,6 +15,10 @@ module Luis
         Intent.new intent
       end
     end
+
+    def composite_entities
+      @composite_entities.map { |entity| CompositeEntity.new entity }
+    end 
 
     # Dialog object
     def dialog
