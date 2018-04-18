@@ -17,7 +17,11 @@ module Luis
     end
 
     def composite_entities
-      @composite_entities.map { |entity| CompositeEntity.new entity }
+      if @composite_entities.present?
+        @composite_entities.map { |entity| CompositeEntity.new entity }
+      else
+        []
+      end
     end 
 
     # Dialog object
