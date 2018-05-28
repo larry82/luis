@@ -18,6 +18,7 @@ module Luis
 
     def composite_entities
       if @composite_entities.present?
+        
         @composite_entities.map { |entity| CompositeEntity.new entity }
       else
         []
